@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savikan Interiors - Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            margin: 20px;
+            color: #000;
+        }
+
+        .invoice-container {
+            width: 800px;
+            margin: auto;
+            border: 1px solid #000;
+        }
+
+        .header-main {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .header-left {
+            width: 50%;
+            padding: 12px;
+        }
+
+        .header-right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            text-align: center;
+            font-size: 22px;
+            color: #2e75b6;
+            border-bottom: 1px solid #000;
+            padding: 8px;
+            font-weight: bold;
+            background-color: #fcfcfc;
+        }
+
+        .supplier-info h2 {
+            margin: 0 0 8px 0;
+            font-size: 20px;
+        }
+
+        .metadata-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .metadata-table td {
+            border-bottom: 1px solid #000;
+            border-left: 1px solid #000;
+            padding: 6px 8px;
+            width: 50%;
+        }
+
+        .metadata-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .label-text {
+            display: block;
+            font-size: 10px;
+            color: #444;
+            margin-bottom: 2px;
+        }
+
+        .value-text {
+            font-weight: bold;
+        }
+
+        .logo-section {
+            padding: 10px;
+            text-align: right;
+            border-bottom: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+
+        .logo-section img {
+            max-width: 140px;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 6px;
+            vertical-align: top;
+        }
+
+        .buyer-section {
+            padding: 12px;
+            border-bottom: 1px solid #000;
+            background-color: #fafafa;
+        }
+
+        input {
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: bold;
+            width: 100%;
+            background: transparent;
+        }
+
+        input:focus {
+            background: #fffde7;
+            outline: none;
+        }
+
+        .num-column {
+            text-align: right;
+        }
+
+        .hsn-summary th {
+            background: #f2f2f2;
+            font-size: 10px;
+        }
+
+        .bank-details {
+            display: flex;
+            border-top: 1px solid #000;
+        }
+
+        .bank-info {
+            width: 60%;
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .signature-area {
+            width: 40%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .sign-img {
+            height: 75px;
+            margin: 5px 0;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .invoice-container {
+                width: 98% !important;
+                margin: 0 !important;
+                border: 1px solid #000;
+            }
+
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="no-print" style="text-align:center; margin-bottom: 20px;">
+        <button onclick="window.print()"
+            style="padding: 10px 20px; cursor: pointer; background: #2e75b6; color: white; border: none; border-radius: 4px; font-weight: bold;">
+            Print / Download PDF
+        </button>
+    </div>
+
+    <div class="invoice-container">
+        <div class="title-bar">TAX INVOICE</div>
+
+        <div class="header-main">
+            <div class="header-left">
+                <div class="supplier-info">
+                    <h2>SAVIKAN INTERIORS</h2>
+                    <div class="supplier-details">
+                        <strong>GSTIN: 27AYLPH4299R1ZC</strong><br>
+                        <strong>PAN: AYLPH4299R</strong><br>
+                        Address: Madhavsai Apartment, Shivneri colony, Pimple gurav, Pune 411061
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="logo-section"><img src="images/Logo.jpeg" alt="Logo"></div>
+                <table class="metadata-table">
+                    <tr>
+                        <td><span class="label-text">Invoice No.</span><input type="text" value="SK/26/001"></td>
+                        <td><span class="label-text" style="font-weight: bold;">Supplier's Reference</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="label-text">Invoice Date</span><input type="text" value="12-02-2026"></td>
+                        <td><span class="label-text">Buyer's Order No.</span><input type="text"
+                                value="PO-LIV-11269-2025-2026"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="buyer-section">
+            <strong>Buyer: LIVSPACE INDIA PRIVATE LIMITED</strong><br>
+            GSTIN: 27AADCH4222R2Z8 | Pune, Maharashtra
+        </div>
+
+        <table>
+            <thead>
+                <tr style="background: #f2f2f2;">
+                    <th width="5%">Sr.</th>
+                    <th width="35%">Description</th>
+                    <th width="10%">HSN</th>
+                    <th width="5%">Qty</th>
+                    <th width="12%">Rate</th>
+                    <th width="12%">Per</th>
+                    <th width="20%">Amount (Taxable)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">1</td>
+                    <td><input type="text" id="desc-input" value="Interior Works"></td>
+                    <td><input type="text" id="hsn-input" value="998724" oninput="updateHsnLabel()"></td>
+                    <td><input type="text" id="qty" value="1" oninput="calculateForward()"></td>
+                    <td><input type="text" id="display-rate" class="num-column" readonly></td>
+                    <td><input type="text" value="PCS" style="text-align: center;"></td>
+                    <td><input type="text" id="base-amount" class="num-column" value="0.00" step="0.01"
+                            oninput="calculateForward()"></td>
+                </tr>
+                <tr>
+                    <td colspan="5" rowspan="2" style="border-bottom: none;"></td>
+                    <td style="text-align: right; font-weight: bold;">CGST (9%)</td>
+                    <td id="cgst-display" class="num-column">0.00</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; font-weight: bold;">SGST (9%)</td>
+                    <td id="sgst-display" class="num-column">0.00</td>
+                </tr>
+                <tr style="font-weight:bold; background:#f2f2f2;">
+                    <td colspan="6" style="text-align:right;">Total (Inclusive of GST)</td>
+                    <td class="num-column">
+                        <input type="text" id="grand-total-input" step="0.01"
+                            style="text-align:right; font-weight:bold;" placeholder="0.00" oninput="calculateReverse()">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="padding:10px; border-bottom: 1px solid #000;">
+            <strong>Amount Chargeable:</strong> <span id="words-area"
+                style="font-style: italic; text-transform: capitalize;">Zero Only</span>
+        </div>
+
+        <table class="hsn-summary">
+            <thead>
+                <tr>
+                    <th rowspan="2">HSN Code</th>
+                    <th rowspan="2">Taxable Value</th>
+                    <th colspan="2">Central Tax</th>
+                    <th colspan="2">State Tax</th>
+                    <th rowspan="2">Total Tax</th>
+                </tr>
+                <tr>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="hsn-summary-val">998724</td>
+                    <td id="taxable-summary-val" class="num-column">0.00</td>
+                    <td style="text-align:center">9%</td>
+                    <td id="central-tax-summary" class="num-column">0.00</td>
+                    <td style="text-align:center">9%</td>
+                    <td id="state-tax-summary" class="num-column">0.00</td>
+                    <td id="total-tax-summary" class="num-column">0.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bank-details">
+            <div class="bank-info">
+                <strong>Bank Details:</strong><br>
+                Bank: <strong>HDFC BANK</strong> | A/c No: <strong>50200110407875</strong><br>
+                IFSC: <strong>HDFC0000900</strong>
+            </div>
+            <div class="signature-area">
+                <p style="margin:0; font-size: 10px;"><em>For SAVIKAN INTERIORS</em></p>
+                <img src="images/sign.jpeg" alt="Signature" class="sign-img"><br>
+                <strong>Authorized Signatory</strong>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateHsnLabel() {
+            document.getElementById('hsn-summary-val').innerText = document.getElementById('hsn-input').value;
+        }
+
+        function calculateForward() {
+            const taxable = parseFloat(document.getElementById('base-amount').value) || 0;
+            const cgst = taxable * 0.09;
+            const sgst = taxable * 0.09;
+            const total = taxable + cgst + sgst;
+
+            document.getElementById('grand-total-input').value = total.toFixed(2);
+            updateAll(taxable, cgst, sgst, total);
+        }
+
+        function calculateReverse() {
+            const total = parseFloat(document.getElementById('grand-total-input').value) || 0;
+            const taxable = total / 1.18;
+            const cgst = taxable * 0.09;
+            const sgst = taxable * 0.09;
+
+            document.getElementById('base-amount').value = taxable.toFixed(2);
+            updateAll(taxable, cgst, sgst, total);
+        }
+
+        function updateAll(taxable, cgst, sgst, total) {
+            // Main Display
+            document.getElementById('cgst-display').innerText = cgst.toFixed(2);
+            document.getElementById('sgst-display').innerText = sgst.toFixed(2);
+
+            // Rate calculation
+            const qty = parseFloat(document.getElementById('qty').value) || 1;
+            document.getElementById('display-rate').value = (taxable / qty).toFixed(2);
+
+            // HSN Summary
+            document.getElementById('taxable-summary-val').innerText = taxable.toFixed(2);
+            document.getElementById('central-tax-summary').innerText = cgst.toFixed(2);
+            document.getElementById('state-tax-summary').innerText = sgst.toFixed(2);
+            document.getElementById('total-tax-summary').innerText = (cgst + sgst).toFixed(2);
+
+            // Words
+            document.getElementById('words-area').innerText = numberToWords(Math.round(total)) + " Only";
+        }
+
+        function numberToWords(num) {
+            var a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+            var b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+            if ((num = num.toString()).length > 9) return 'overflow';
+            var n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+            if (!n) return ''; var str = '';
+            str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';
+            str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
+            str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
+            str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
+            str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+            return str || 'Zero';
+        }
+    </script>
+</body>
+
+</html>
